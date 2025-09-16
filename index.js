@@ -40,14 +40,20 @@ app.use((req, res, next) => {
     next();
 });
 
-// -- DATABASE CONNECTION --
-const db = new pg.Pool({
+// UPDATED: DATABASE CONNECTION FOR DEPLOYMENT
+const poolConfig = process.env.DATABASE_URL ? {
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+} : {
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
     database: process.env.DB_DATABASE,
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
-});
+};
+const db = new pg.Pool(poolConfig);
 
 // -- PASSPORT AUTHENTICATION STRATEGY --
 passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
@@ -178,7 +184,7 @@ app.get("/blogs/:id/edit", isAuthenticated, async (req, res) => {
     const { id } = req.params;
     try {
         const result = await db.query("SELECT * FROM blogs WHERE id = $1 AND user_id = $2", [id, req.user.id]);
-        if (result.rows.length === 0) return res.status(403).send("Post not only found or you're not authorized to edit it.");
+        if (result.rows.length === 0) return res.status(403).send("Post not found or you're not authorized to edit it.");
         res.render("edit.ejs", { blog: result.rows[0] });
     } catch (err) { console.error(err); }
 });

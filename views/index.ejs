@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlogSpace</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/layout.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/layout.css">
     <style>
       @media(max-width:992px){
         .content_beside_img{
@@ -21,76 +21,27 @@
     </style>
 </head>
 <body class="text-center">
-  <div class="container-fluid" id="t_header">
-    <header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4" id="header_heading">BlogSpace</span>
-      </a>
+  
+  <%- include('partials/header', { user: locals.user }) %>
 
-      <ul class="nav px-5">
-        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#blog-section" class="nav-link">All Blogs</a></li>
-        <li class="nav-item"><a href="#write_form" class="nav-link">Write</a></li>
-        <li class="nav-item"><a href="#edit_form"class="nav-link">Edit</a></li>
-        <li class="nav-item"><a href="#delete_form" class="nav-link">Delete</a></li>
-      </ul>
-    </header>
-  </div>
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" id="main">
-        <div class="d-flex content_beside_img"><div class="d-flex justify-content-center align-items-center"><main class="px-3">
-          <h1 class="dm-serif-display-regular-italic pt-5">Speak your mind, read the world.</h1>
-          <h3 class="pt-3 tagline">A quiet space for deeper thoughts. Write here, right now!</h3>
-          
-        </main></div><div ><img src="/images/img12.png" alt="boy"/></div></div>
-        <div class="blog-section container-lg">
-
-          <!-- Blog Post Display -->
-          <h2 id="blog-section" class="section-title py-3">Blog Posts</h2>
-          <div class="blog-list">
-            <% if (locals.blogs) { %>
-              <% blogs.forEach((element, index) => { %>
-                <div class="blog-card">
-                  <h5 class="headings">Blog <%= index + 1 %></h5>
-                  <p><%= element %></p>
-                </div>
-              <% }) %>
-            <% } %>
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" id="main">
+      <div class="d-flex content_beside_img">
+          <div class="d-flex justify-content-center align-items-center">
+              <main class="px-3">
+                  <h1 class="dm-serif-display-regular-italic pt-5">Speak your mind, read the world.</h1>
+                  <h3 class="pt-3 tagline">A quiet space for deeper thoughts. Write here, right now!</h3>
+              </main>
           </div>
-        
-          <!-- Submit Blog Form -->
-          <h4 id="write_form" class="form-heading pt-3">Write a New Blog</h4>
-          <form action="/submit" method="POST" class="blog-form mt-4">
-            <label for="blog" class="headings pb-2">Type out your Blog now</label>
-            <input type="text" name="blog" required class="form-control mb-3">
-            <button type="submit" class="btn btn-submit">Submit</button>
-          </form>
-        
-          <!-- Edit Blog Form -->
-          <h4 id="edit_form" class="form-heading pt-3">Edit a Blog</h4>
-          <form action="/edit" method="POST" class="blog-form mt-4">
-            <label for="blogNum" class="headings pb-2">Enter Blog Number to edit</label>
-            <input type="number" name="blogNum" required class="form-control mb-2">
-            <label for="updatedText" class="headings py-2">Type/Paste the Updated text</label>
-            <input type="text" name="updatedText" required class="form-control mb-3">
-            <button type="submit" class="btn btn-submit">Edit</button>
-          </form>
-        
-          <!-- Delete Blog Form -->
-          <h4 id="delete_form" class="form-heading pt-3">Delete a Blog</h4>
-          <form action="/delete" method="POST" class="blog-form mt-4">
-            <label for="blogNum" class="headings pb-2">Enter Blog Number to delete</label>
-            <input type="number" name="blogNum" required class="form-control mb-3">
-            <button type="submit" class="btn btn-submit">Delete</button>
-          </form>
-        
-        </div>
-        
-        <footer class="mt-4 text-black">
-          <p>Parth Rai @2025.</p>
-        </footer>
-
+          <div>
+              <img src="/images/img12.png" alt="boy"/>
+          </div>
       </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
+      <footer class="text-black text-center">
+        <p>Parth Rai @<%= currentYear %>.</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

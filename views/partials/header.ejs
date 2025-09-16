@@ -1,0 +1,26 @@
+<div class="container-fluid" id="t_header">
+    <header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4" id="header_heading">BlogSpace</span>
+      </a>
+  
+      <ul class="nav px-5">
+        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="/blogs" class="nav-link">All Blogs</a></li>
+        
+        <% if (locals.user && locals.user.id) { %>
+          <li class="nav-item"><a href="/my-posts" class="nav-link">My Posts</a></li>
+          <li class="nav-item"><a href="/blogs/new" class="nav-link">Write Post</a></li>
+          <li class="nav-item">
+            <form action="/logout" method="POST">
+              <button type="submit" class="nav-link nav-logout-btn">Logout</button>
+            </form>
+          </li>
+        <% } else { %>
+          <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+          <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
+        <% } %>
+      </ul>
+    </header>
+  </div>

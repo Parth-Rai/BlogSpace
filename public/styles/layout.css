@@ -53,8 +53,8 @@
     color:black;
 }
 .blog-card {
-    background-color: #fff8e6; /* warm off-white */
-    border-left: 6px solid black; /* soft earthy red accent */
+    background-color: #fff8e6; 
+    border-left: 6px solid black; 
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
@@ -81,11 +81,10 @@
   }
   
   
-  /* Forms */
-/* Refined Blog Form Styling */
+ 
 .blog-form {
-    background-color: #fdfaf4; /* soft warm white */
-    border: 1px solid #d8cfc4; /* light beige-gray border */
+    background-color: #fdfaf4; 
+    border: 1px solid #d8cfc4; 
     border-radius: 12px;
     padding: 2rem;
     margin-top: 2rem;
@@ -96,13 +95,13 @@
     font-weight: 600;
     display: block;
     margin-bottom: 0.5rem;
-    color: #1e1e1e; /* strong dark text */
+    color: #1e1e1e; 
   }
   
   .blog-form input {
     width: 100%;
     padding: 0.6rem 1rem;
-    border: 1px solid #c8b6a6; /* soft taupe border */
+    border: 1px solid #c8b6a6; 
     border-radius: 8px;
     font-size: 1rem;
     color: #333;
@@ -110,13 +109,13 @@
   }
   
   .blog-form input:focus {
-    border-color: #d77a61; /* terracotta highlight */
+    border-color: #d77a61; 
     outline: none;
     box-shadow: 0 0 0 2px rgba(215, 122, 97, 0.2);
   }
   
   .btn-submit {
-    background-color: #111; /* soft terracotta */
+    background-color: #111; 
     color: #fff;
     border: none;
     padding: 0.6rem 1.5rem;
@@ -129,4 +128,3 @@
   .btn-submit:hover {
     background-color: #fff8e6;
   }
-  

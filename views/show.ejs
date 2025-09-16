@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= blog.title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/layout.css">
+</head>
+<body>
+    <%- include('partials/header', { user: locals.user }) %>
+
+    <div class="container-lg my-5">
+        <div class="blog-post-full">
+            <h1><%= blog.title %></h1>
+            <p class="text-muted">By <%= blog.author_email %> on <%= new Date(blog.created_at).toLocaleDateString() %></p>
+            <hr>
+            <div class="blog-content">
+                <%- blog.content.replace(/\n/g, '<br>') %>
+            </div>
+            <hr>
+
+            <% if (locals.user && user.id === blog.user_id) { %>
+                <div class="post-actions">
+                    <a href="/blogs/<%= blog.id %>/edit" class="btn btn-secondary">Edit Post</a>
+                    <form action="/blogs/<%= blog.id %>/delete" method="POST" class="d-inline ms-2">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?');">Delete Post</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <footer class="mt-4 text-black text-center">
+        <p>Parth Rai @<%= currentYear %>.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

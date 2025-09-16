@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write a New Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/layout.css">
+</head>
+<body>
+    <%- include('partials/header', { user: locals.user }) %>
+
+    <div class="container-lg" style="min-height: 70vh;">
+      <h2 id="write_form" class="form-heading pt-5">Write a New Blog</h2>
+      <form action="/blogs" method="POST" class="blog-form mt-4">
+        <div class="mb-3">
+            <label for="title" class="headings pb-2">Title</label>
+            <input type="text" id="title" name="title" required class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="headings pb-2">Content</label>
+            <textarea id="content" name="content" rows="10" required class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-submit">Publish Post</button>
+      </form>
+    </div>
+
+    <footer class="mt-4 text-black text-center">
+      <p>Parth Rai @<%= currentYear %>.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>

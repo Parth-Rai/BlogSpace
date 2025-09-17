@@ -128,3 +128,28 @@
   .btn-submit:hover {
     background-color: #fff8e6;
   }
+  @media (max-width: 768px) {
+
+    .dm-serif-display-regular-italic {
+      font-size: 3.5rem; 
+      line-height: 1.2;
+    }
+  
+    .tagline {
+      font-size: 1.1rem;
+    }
+  
+    .content_beside_img {
+      flex-direction: column;
+      text-align: center;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  
+   
+    .content_beside_img img {
+      max-width: 80%; 
+      height: auto;
+      margin-top: 2rem;
+    }
+  }

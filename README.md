@@ -38,7 +38,7 @@ You need to have Node.js and PostgreSQL installed on your local machine.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/Parth-Rai/BlogSpace.git](https://github.com/Parth-Rai/BlogSpace.git)
+    git clone https://github.com/Parth-Rai/BlogSpace.git
     ```
 2.  **Install NPM packages:**
     ```bash
